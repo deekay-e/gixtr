@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { FaArrowRight } from 'react-icons/fa'
 
 import './Login.scss'
@@ -44,9 +45,11 @@ const Login = () => {
         </div>
         <Button label={'SIGN IN'} className="auth-button button" disabled={true} />
 
-        <span className="forgot-password">
-          Forgot password? <FaArrowRight className="arrow-right" />
-        </span>
+        <Link to={'/forgot-password'}>
+          <span className="forgot-password">
+            Forgot password? <FaArrowRight className="arrow-right" />
+          </span>
+        </Link>
       </form>
     </div>
   )

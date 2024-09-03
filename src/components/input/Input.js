@@ -3,18 +3,22 @@ import PropTypes from 'prop-types'
 
 import './Input.scss'
 
-const Input = ({ id, name, type, value, className, labelText, placeholder, hnadleChange }) => {
+const Input = ({ id, name, type, value, className, labelText, placeholder, handleChange }) => {
   return (
     <>
       <div className="form-row">
-        {labelText && <label htmlFor={name} className="form-label">{labelText}</label>}
+        {labelText && (
+          <label htmlFor={name} className="form-label">
+            {labelText}
+          </label>
+        )}
 
         <input
           id={id}
           name={name}
           type={type}
           value={value}
-          onChange={hnadleChange}
+          onChange={handleChange}
           placeholder={placeholder}
           className={`form-input ${className}`}
           autoComplete="false"
@@ -32,7 +36,7 @@ Input.propTypes = {
   className: PropTypes.string,
   labelText: PropTypes.string,
   placeholder: PropTypes.string,
-  hnadleChange: PropTypes.func
+  handleChange: PropTypes.func
 }
 
 export default Input

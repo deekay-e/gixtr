@@ -1,11 +1,10 @@
 import React from 'react'
-import { FaArrowRight } from 'react-icons/fa'
 
-import './Login.scss'
+import './Register.scss'
 import Input from '../../../components/input/Input'
 import Button from '../../../components/button/Button'
 
-const Login = () => {
+const Register = () => {
   return (
     <div className="auth-inner">
       {/* <div className="alerts alert-error" role="alert">
@@ -23,6 +22,15 @@ const Login = () => {
             handleChange={() => {}}
           />
           <Input
+            id="email"
+            name="email"
+            type="email"
+            value="chi.pra@kaycee.co"
+            labelText="Email"
+            placeholder="Enter your email"
+            handleChange={() => {}}
+          />
+          <Input
             id="password"
             name="password"
             type="password"
@@ -31,25 +39,11 @@ const Login = () => {
             placeholder="Enter your password"
             handleChange={() => {}}
           />
-          <label className="checkmark-container" htmlFor="checkbox">
-            <Input
-              id="checkbox"
-              type="checkbox"
-              name="checkbox"
-              value={false}
-              handleChange={() => {}}
-            />
-            Keep me signed in
-          </label>
         </div>
-        <Button label={'SIGN IN'} className="auth-button button" disabled={true} />
-
-        <span className="forgot-password">
-          Forgot password? <FaArrowRight className="arrow-right" />
-        </span>
+        <Button label={'SIGN UP'} className="auth-button button" disabled={true} />
       </form>
     </div>
   )
 }
 
-export default Login
+export default Register

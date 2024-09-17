@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
+import { authService } from '../../../services/api/auth/auth.service'
 
 import './Register.scss'
 import Input from '../../../components/input/Input'
 import Button from '../../../components/button/Button'
+import { Utils } from '../../../services/utils/utils.service'
 
 const Register = () => {
   const [username, setUsername] = useState('')
@@ -17,6 +19,23 @@ const Register = () => {
     setLoading(true)
     event.preventDefault()
     try {
+      const avatarColor = Utils.avatarColor()
+      const roles = ['org:admin', 'org:user']
+      const avatarImage = Utils.generateAvatar(username.charAt(0).toUpperCase(), avatarColor)
+      const user = await authService.signup({
+        username,
+        roles,
+        email,
+        password,
+        avatarColor,
+        avatarImage
+      })
+      console.log(user)
+
+      // 1 - set logged un to true in local storage
+      // 2 - set username in local storage
+      // 3 - dispatch user to redux
+
       setHasError(false)
       setAlertType('alert-success')
     } catch (error) {
@@ -43,6 +62,7 @@ const Register = () => {
             value={username}
             labelText="Username"
             placeholder="Enter your username"
+            style={{ border: `${hasError ? '1px solid #fa9b8a' : ''}` }}
             handleChange={(event) => setUsername(event.target.value)}
           />
           <Input
@@ -52,6 +72,7 @@ const Register = () => {
             value={email}
             labelText="Email"
             placeholder="Enter your email"
+            style={{ border: `${hasError ? '1px solid #fa9b8a' : ''}` }}
             handleChange={() => setEmail(event.target.value)}
           />
           <Input
@@ -61,6 +82,7 @@ const Register = () => {
             value={password}
             labelText="Password"
             placeholder="Enter your password"
+            style={{ border: `${hasError ? '1px solid #fa9b8a' : ''}` }}
             handleChange={() => setPassword(event.target.value)}
           />
         </div>

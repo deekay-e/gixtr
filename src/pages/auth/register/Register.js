@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { authService } from '../../../services/api/auth/auth.service'
 
 import './Register.scss'
@@ -7,13 +7,14 @@ import Button from '../../../components/button/Button'
 import { Utils } from '../../../services/utils/utils.service'
 
 const Register = () => {
-  const [username, setUsername] = useState('')
-  const [email, setEmail] = useState('')
+  const [user, setUser] = useState({})
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
-  const [alertType, setAlertType] = useState('')
   const [hasError, setHasError] = useState(false)
+  const [alertType, setAlertType] = useState('')
+  const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
 
   const registerUser = async (event) => {
     setLoading(true)
@@ -22,7 +23,7 @@ const Register = () => {
       const avatarColor = Utils.avatarColor()
       const roles = ['org:admin', 'org:user']
       const avatarImage = Utils.generateAvatar(username.charAt(0).toUpperCase(), avatarColor)
-      const user = await authService.signup({
+      const res = await authService.signup({
         username,
         roles,
         email,
@@ -30,12 +31,13 @@ const Register = () => {
         avatarColor,
         avatarImage
       })
-      console.log(user)
+      console.log(res)
 
       // 1 - set logged un to true in local storage
       // 2 - set username in local storage
       // 3 - dispatch user to redux
 
+      setUser(res.data.user)
       setHasError(false)
       setAlertType('alert-success')
     } catch (error) {
@@ -45,6 +47,14 @@ const Register = () => {
       setErrorMessage(error?.response?.data.message)
     }
   }
+
+  useEffect(() => {
+    if (loading && !user) return
+    if (user) {
+      console.log('navigate to streams page')
+      setLoading(false)
+    }
+  }, [loading, user])
 
   return (
     <div className="auth-inner">
@@ -73,7 +83,7 @@ const Register = () => {
             labelText="Email"
             placeholder="Enter your email"
             style={{ border: `${hasError ? '1px solid #fa9b8a' : ''}` }}
-            handleChange={() => setEmail(event.target.value)}
+            handleChange={(event) => setEmail(event.target.value)}
           />
           <Input
             id="password"
@@ -83,7 +93,7 @@ const Register = () => {
             labelText="Password"
             placeholder="Enter your password"
             style={{ border: `${hasError ? '1px solid #fa9b8a' : ''}` }}
-            handleChange={() => setPassword(event.target.value)}
+            handleChange={(event) => setPassword(event.target.value)}
           />
         </div>
         <Button

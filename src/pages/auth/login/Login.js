@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { FaArrowRight } from 'react-icons/fa'
 
 import './Login.scss'
 import Input from '../../../components/input/Input'
 import Button from '../../../components/button/Button'
+import { authService } from '../../../services/api/auth/auth.service'
 
 const Login = () => {
   const [user, setUser] = useState({})
@@ -24,15 +25,15 @@ const Login = () => {
         login,
         password
       })
-      setPersistLogin(persistLogin)
       console.log(res)
 
       // 1 - set logged un to true in local storage
       // 2 - set username in local storage
       // 3 - dispatch user to redux
 
-      setUser(res.data.user)
       setHasError(false)
+      setUser(res.data.user)
+      setPersistLogin(persistLogin)
       setAlertType('alert-success')
     } catch (error) {
       setLoading(false)

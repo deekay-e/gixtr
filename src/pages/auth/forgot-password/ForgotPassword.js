@@ -2,11 +2,11 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { FaArrowLeft } from 'react-icons/fa'
 
-import './ForgotPassword.scss'
-import Input from '../../../components/input/Input'
-import Button from '../../../components/button/Button'
-import backgroundImage from '../../../assets/images/background.jpg'
-import { authService } from '../../../services/api/auth/auth.service'
+import Input from '@component/input/Input'
+import Button from '@component/button/Button'
+import { authService } from '@service/api/auth/auth.service'
+import backgroundImage from '@asset/images/background.jpg'
+import '@page/auth/forgot-password/ForgotPassword.scss'
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState('')
@@ -20,10 +20,6 @@ const ForgotPassword = () => {
     event.preventDefault()
     try {
       const res = await authService.forgotPassword(email)
-
-      // 1 - set logged un to true in local storage
-      // 2 - set username in local storage
-      // 3 - dispatch user to redux
 
       setEmail('')
       setLoading(true)

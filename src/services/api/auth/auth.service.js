@@ -1,4 +1,4 @@
-import axios from '../../axios'
+import axios from '@service/axios'
 
 class AuthService {
   /* - use this generic method as alternative

@@ -15,16 +15,16 @@ import {
   FaUsers
 } from 'react-icons/fa'
 
-import blessed from '../../assets/feelings/blessed.jpg'
-import excited from '../../assets/feelings/excited.jpg'
-import happy from '../../assets/feelings/happy.jpg'
-import loved from '../../assets/feelings/loved.jpg'
-import angry from '../../assets/reactions/angry.png'
-// import happy from '../../assets/reactions/happy.png'
-import like from '../../assets/reactions/like.png'
-import love from '../../assets/reactions/love.png'
-import sad from '../../assets/reactions/sad.png'
-import wow from '../../assets/reactions/wow.png'
+import happy from '@asset/feelings/happy.jpg'
+import loved from '@asset/feelings/loved.jpg'
+import angry from '@asset/reactions/angry.png'
+import blessed from '@asset/feelings/blessed.jpg'
+import excited from '@asset/feelings/excited.jpg'
+import happyReaction from '@asset/reactions/happy.png'
+import like from '@asset/reactions/like.png'
+import love from '@asset/reactions/love.png'
+import sad from '@asset/reactions/sad.png'
+import wow from '@asset/reactions/wow.png'
 
 export const sideBarItems = [
   {
@@ -198,7 +198,7 @@ export const reactionsMap = {
   love,
   wow,
   sad,
-  happy,
+  happyReaction,
   angry
 }
 

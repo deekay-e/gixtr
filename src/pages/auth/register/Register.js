@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { authService } from '../../../services/api/auth/auth.service'
 
-import './Register.scss'
-import Input from '../../../components/input/Input'
-import Button from '../../../components/button/Button'
-import { Utils } from '../../../services/utils/utils.service'
+import Input from '@component/input/Input'
+import Button from '@component/button/Button'
+import { authService } from '@service/api/auth/auth.service'
+import { Utils } from '@service/utils/utils.service'
+import '@page/auth/register/Register.scss'
 
 const Register = () => {
   const [user, setUser] = useState({})
@@ -21,11 +21,9 @@ const Register = () => {
     event.preventDefault()
     try {
       const avatarColor = Utils.avatarColor()
-      const roles = ['org:admin', 'org:user']
       const avatarImage = Utils.generateAvatar(username.charAt(0).toUpperCase(), avatarColor)
       const res = await authService.signup({
         username,
-        roles,
         email,
         password,
         avatarColor,

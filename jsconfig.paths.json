@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@hook/*": ["src/hooks/*"],
+      "@redux/*": ["src/redux/*"],
+      "@asset/*": ["src/assets/*"],
+      "@component/*": ["src/components/*"],
+      "@service/*": ["src/services/*"],
+      "@color/*": ["src/colors/*"],
+      "@mock/*": ["src/mocks/*"],
+      "@page/*": ["src/pages/*"],
+      "@/*": ["src/*"]
+    }
+  }
+}

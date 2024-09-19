@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { FaArrowRight } from 'react-icons/fa'
 
-import './Login.scss'
-import Input from '../../../components/input/Input'
-import Button from '../../../components/button/Button'
-import { authService } from '../../../services/api/auth/auth.service'
+import '@page/auth/login/Login.scss'
+import Input from '@component/input/Input'
+import Button from '@component/button/Button'
+import { authService } from '@service/api/auth/auth.service'
 
 const Login = () => {
   const [user, setUser] = useState({})

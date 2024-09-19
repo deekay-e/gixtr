@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import './Input.scss'
+import '@component/input/Input.scss'
 
 const Input = ({
   id,

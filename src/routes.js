@@ -1,6 +1,7 @@
 import { useRoutes } from 'react-router-dom'
 
 import { AuthTabs, ForgotPassword, ResetPassword } from '@page/auth'
+import Stream from '@page/social/stream/Stream'
 
 export const AppRouter = () => {
   const elements = useRoutes([
@@ -15,6 +16,10 @@ export const AppRouter = () => {
     {
       path: '/reset-password',
       element: <ResetPassword />
+    },
+    {
+      path: '/app/stream',
+      element: <Stream />
     }
   ])
 

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import Input from '@component/input/Input'
 import Button from '@component/button/Button'
@@ -15,6 +16,7 @@ const Register = () => {
   const [alertType, setAlertType] = useState('')
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
+  const navigate = useNavigate
 
   const registerUser = async (event) => {
     setLoading(true)
@@ -48,11 +50,8 @@ const Register = () => {
 
   useEffect(() => {
     if (loading && !user) return
-    if (user) {
-      console.log('navigate to streams page')
-      setLoading(false)
-    }
-  }, [loading, user])
+    if (user) navigate('/app/stream')
+  }, [loading, user, navigate])
 
   return (
     <div className="auth-inner">

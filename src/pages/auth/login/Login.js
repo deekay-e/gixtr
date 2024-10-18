@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { FaArrowRight } from 'react-icons/fa'
 
 import '@page/auth/login/Login.scss'
@@ -16,6 +16,7 @@ const Login = () => {
   const [hasError, setHasError] = useState(false)
   const [alertType, setAlertType] = useState('')
   const [loading, setLoading] = useState(false)
+  const navigate = useNavigate
 
   const loginUser = async (event) => {
     setLoading(true)
@@ -45,11 +46,8 @@ const Login = () => {
 
   useEffect(() => {
     if (loading && !user) return
-    if (user) {
-      console.log('navigate to streams page from login')
-      setLoading(false)
-    }
-  }, [loading, user])
+    if (user) navigate('app/stream')
+  }, [loading, user, navigate])
 
   return (
     <div className="auth-inner">

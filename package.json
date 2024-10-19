@@ -6,22 +6,26 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.7.7",
+    "lodash": "^4.17.21",
     "react": "^18.3.1",
+    "react-app-rewired": "^2.2.1",
     "react-dom": "^18.3.1",
+    "react-icons": "^5.3.0",
     "react-loading-skeleton": "^3.4.0",
-    "react-scripts": "5.0.1",
+    "react-router-dom": "^6.22.3",
+    "react-scripts": "^5.0.1",
     "sass": "^1.77.8",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-app-rewired start",
     "lint": "eslint 'app/**/*.js'",
     "lint:fix": "eslint 'app/**/*.js' --fix",
     "prettier": "prettier --check 'app/**/*.{js,jsx,json}'",
     "prettier:fix": "prettier --write 'app/**/*.{js,jsx,json}'",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test"
   },
   "eslintConfig": {
     "extends": [
@@ -43,6 +47,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.9.1",
+    "ajv": "^8.17.1",
     "eslint": "^9.9.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-config-standard": "^17.1.0",
@@ -55,6 +60,7 @@
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "globals": "^15.9.0",
-    "prettier": "^3.3.3"
+    "prettier": "^3.3.3",
+    "react-app-alias": "^2.2.2"
   }
 }
